@@ -1,0 +1,110 @@
+swagger: "2.0"
+info:
+  description: "This is the properties service for AB2D and it's other services."
+  version: "1.0"
+  title: "Properties Service"
+host: "properties.ab2d.cms.gov"
+basePath: "/v1"
+schemes:
+  - "https"
+paths:
+  /properties:
+    get:
+      summary: "Retrieve the list of properties"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Success"
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Internal Server Error"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "GET"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:012345678901:function:propserviceapi-ReadPropertyFunction-SdJ94xzfaq9o/invocations"
+        responses:
+          default:
+            statusCode: 200
+          requestTemplates:
+            application/json: "#set($inputRoot = $input.path('$')) [ #foreach($elem in $inputRoot.bins) { \"key\": \"$elem.key\", \"value\": \"$elem.value\" } ]"
+    post:
+      summary: "Create a new property"
+      produces:
+        - "application/json"
+      responses:
+        201:
+          description: "Property Created"
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Internal Server Error"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:012345678901:function:propserviceapi-CreatePropertyFunction-PEN32oit8QeT/invocations"
+        responses:
+          default:
+            statusCode: 200
+          requestTemplates:
+            application/json: "{ \"status\": 201, \"description\": \"Property created: key\" }"
+  /properties/{key}:
+    get:
+      summary: "Find a property by its key"
+      produces:
+        - "application/json"
+      parameters:
+        -
+          name: "key"
+          in: "path"
+          description: "The key of the parameter to search for"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Success"
+        401:
+          description: "Unauthorized"
+        404:
+          description: "Property Not found"
+        500:
+          description: "Internal Server Error"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "GET"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:012345678901:function:propserviceapi-ReadSpecificPropertyFunction-lKYUnRf4QZAz/invocations"
+        responses:
+          default:
+            statusCode: 200
+        requestTemplates:
+          application/json: "{\"key\": \"key\", \"value\": \"value\"}"
+    delete:
+      summary: "delete property by its key"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "key"
+          in: "path"
+          description: "The key of the parameter to delete"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Success"
+        401:
+          description: "Unauthorized"
+        404:
+          description: "Property Not found"
+        500:
+          description: "Internal Server Error"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "DELETE"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:012345678901:function:propserviceapi-DeletePropertyFunction-MRxbDE8yti35/invocations"
+        responses:
+          default:
+            statusCode: 200
+        requestTemplates:
+          application/json: "{ \"status\": 200, \"description\": \"Property deleted: key\"}"
+

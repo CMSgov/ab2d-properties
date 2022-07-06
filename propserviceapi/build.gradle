@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def awsLambdaCore = '1.2.1'
+def awsLambdaEvents = '3.11.0'
+def lombokVersion = '1.18.22'
+def jacksonCore = '2.13.3'
+def dynamoDb = '1.12.249'
+
+dependencies {
+    implementation "com.amazonaws:aws-lambda-java-core:${awsLambdaCore}"
+    implementation "com.amazonaws:aws-lambda-java-events:${awsLambdaEvents}"
+    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonCore}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonCore}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    implementation "org.projectlombok:lombok:${lombokVersion}"
+    implementation "com.amazonaws:aws-java-sdk-dynamodb:${dynamoDb}"
+    testImplementation 'junit:junit:4.13.2'
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
