@@ -4,7 +4,9 @@ import gov.cms.ab2d.properties.dto.PropertyDto;
 import gov.cms.ab2d.properties.model.Property;
 import gov.cms.ab2d.properties.repository.PropertiesRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class PropertyServiceImpl implements PropertyService {
     private PropertiesRepository propertiesRepository;
 
@@ -25,23 +28,21 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public PropertyDto getProperty(String key) {
         Optional<Property> propOptional = propertiesRepository.findByKey(key);
-        if (propOptional.isPresent()) {
-            return new PropertyDto(key, propOptional.get().getValue());
-        }
-        return null;
+        return propOptional.map(property -> new PropertyDto(key, property.getValue())).orElse(null);
     }
 
     public PropertyDto saveProperty(String key, String value) {
+        if (!StringUtils.hasText(key) || !StringUtils.hasText(value)) {
+            log.error("Invalid key/value combination: " + key + "/" + value);
+            return null;
+        }
         Optional<Property> propOptional = propertiesRepository.findByKey(key);
         Property found;
         if (propOptional.isPresent()) {
             found = propOptional.get();
             found.setValue(value);
-            found.setModified(OffsetDateTime.now());
         } else {
             found = new Property();
-            found.setCreated(OffsetDateTime.now());
-            found.setModified(OffsetDateTime.now());
             found.setKey(key);
             found.setValue(value);
         }

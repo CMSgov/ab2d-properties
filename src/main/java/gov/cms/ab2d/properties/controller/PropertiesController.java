@@ -35,14 +35,14 @@ public class PropertiesController {
 
     @PostMapping("/properties")
     ResponseEntity<PropertyDto> save(@RequestParam String key, @RequestParam String value) {
-        return new ResponseEntity<>(propertyService.saveProperty(key, value), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(propertyService.saveProperty(key, value), HttpStatus.OK);
     }
 
     @DeleteMapping("/properties/{key}")
     ResponseEntity<Boolean> delete(@PathVariable String key) {
         try {
             propertyService.deleteProperty(key);
-            return new ResponseEntity<>(true, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(true, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
         }
