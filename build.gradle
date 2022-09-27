@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.7.0'
 }
 
 repositories {
@@ -11,18 +12,28 @@ def awsLambdaEvents = '3.11.0'
 def lombokVersion = '1.18.22'
 def jacksonCore = '2.13.3'
 def dynamoDb = '1.12.249'
+def validationVersion = '2.0.1.Final'
+def springBootVersion = '2.7.0'
+def postgresVersion = '42.3.6'
 
 dependencies {
+    implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+
     implementation "com.amazonaws:aws-lambda-java-core:${awsLambdaCore}"
     implementation "com.amazonaws:aws-lambda-java-events:${awsLambdaEvents}"
     implementation "com.fasterxml.jackson.core:jackson-core:${jacksonCore}"
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonCore}"
+    implementation 'org.jetbrains:annotations:20.1.0'
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    runtimeOnly "org.postgresql:postgresql:${postgresVersion}"
     implementation "org.projectlombok:lombok:${lombokVersion}"
     implementation "com.amazonaws:aws-java-sdk-dynamodb:${dynamoDb}"
+    implementation "javax.validation:validation-api:${validationVersion}"
     testImplementation 'junit:junit:4.13.2'
 }
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 17
+targetCompatibility = 17
