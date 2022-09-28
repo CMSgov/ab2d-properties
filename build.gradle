@@ -1,16 +1,20 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.0'
+    id "org.sonarqube" version "3.3"
+    id "maven-publish"
+    id 'com.jfrog.artifactory' version '4.27.1' apply false
 }
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
+
 test {
     useJUnitPlatform()
 }
-def awsLambdaCore = '1.2.1'
-def awsLambdaEvents = '3.11.0'
+
 def lombokVersion = '1.18.22'
 def jacksonCore = '2.13.3'
 def validationVersion = '2.0.1.Final'
@@ -24,8 +28,6 @@ dependencies {
     implementation "org.liquibase:liquibase-core:${liquibaseVersion}"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-    implementation "com.amazonaws:aws-lambda-java-core:${awsLambdaCore}"
-    implementation "com.amazonaws:aws-lambda-java-events:${awsLambdaEvents}"
     implementation "com.fasterxml.jackson.core:jackson-core:${jacksonCore}"
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonCore}"
     implementation 'org.jetbrains:annotations:20.1.0'
