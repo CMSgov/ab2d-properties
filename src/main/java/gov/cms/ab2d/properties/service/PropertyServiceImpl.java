@@ -22,7 +22,7 @@ public class PropertyServiceImpl implements PropertyService {
     public List<PropertyDto> getPropertiesDto() {
         List<Property> properties = propertiesRepository.findAll();
         return properties.stream()
-                .map(p -> new PropertyDto(p.getKey(), p.getValue())).collect(Collectors.toList());
+                .map(p -> new PropertyDto(p.getKey(), p.getValue())).toList();
     }
 
     @Override

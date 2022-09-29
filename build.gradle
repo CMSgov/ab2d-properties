@@ -14,6 +14,7 @@ repositories {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
 }
 
 def lombokVersion = '1.18.22'

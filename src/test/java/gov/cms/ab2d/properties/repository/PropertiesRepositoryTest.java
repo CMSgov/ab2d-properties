@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @Testcontainers
-public class PropertiesRepositoryTest {
+class PropertiesRepositoryTest {
     @Autowired
     private PropertiesRepository propertiesRepository;
 

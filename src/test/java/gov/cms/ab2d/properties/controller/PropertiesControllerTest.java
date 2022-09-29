@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SpringBootApp.class, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @Testcontainers
-public class PropertiesControllerTest {
+class PropertiesControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -45,7 +45,7 @@ public class PropertiesControllerTest {
     }
 
     @Test
-    public void testList() throws Exception {
+    void testList() throws Exception {
 
         this.mockMvc.perform(get("/properties")
                         .contentType(MediaType.APPLICATION_JSON))
