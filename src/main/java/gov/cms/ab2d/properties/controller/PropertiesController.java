@@ -28,7 +28,7 @@ public class PropertiesController {
     ResponseEntity<PropertyDto> listProperty(@PathVariable String key) {
         PropertyDto prop = propertyService.getProperty(key);
         if (prop == null) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new PropertyDto(), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(prop, HttpStatus.OK);
     }
