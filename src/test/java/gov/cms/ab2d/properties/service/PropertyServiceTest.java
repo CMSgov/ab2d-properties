@@ -27,10 +27,10 @@ class PropertyServiceTest {
     @Container
     private static final PostgreSQLContainer POSTGRE_SQL_CONTAINER = new AB2DPostgresqlContainer();
 
-    String key = "Hello";
-    String value = "World";
+    private String key = "Hello";
+    private String value = "World";
 
-    PropertyService service;
+    private PropertyService service;
 
     @BeforeEach
     void init() {
