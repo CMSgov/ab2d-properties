@@ -20,17 +20,17 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 @Testcontainers
-public class PropertyServiceTest {
+class PropertyServiceTest {
     @Autowired
     private PropertiesRepository propertiesRepository;
 
     @Container
-    private static final PostgreSQLContainer postgreSQLContainer = new AB2DPostgresqlContainer();
+    private static final PostgreSQLContainer POSTGRE_SQL_CONTAINER = new AB2DPostgresqlContainer();
 
-    String key = "Hello";
-    String value = "World";
+    private String key = "Hello";
+    private String value = "World";
 
-    PropertyService service;
+    private PropertyService service;
 
     @BeforeEach
     void init() {
@@ -44,7 +44,7 @@ public class PropertyServiceTest {
     }
 
     @Test
-    public void testTheDb() {
+    void testTheDb() {
         List<PropertyDto> properties = service.getPropertiesDto();
         assertNotNull(properties);
         assertEquals(0, properties.size());

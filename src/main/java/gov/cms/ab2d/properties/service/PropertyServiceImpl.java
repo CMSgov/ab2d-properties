@@ -8,10 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -22,7 +20,7 @@ public class PropertyServiceImpl implements PropertyService {
     public List<PropertyDto> getPropertiesDto() {
         List<Property> properties = propertiesRepository.findAll();
         return properties.stream()
-                .map(p -> new PropertyDto(p.getKey(), p.getValue())).collect(Collectors.toList());
+                .map(p -> new PropertyDto(p.getKey(), p.getValue())).toList();
     }
 
     @Override

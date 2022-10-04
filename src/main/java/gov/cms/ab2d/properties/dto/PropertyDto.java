@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class PropertyDto {
     @NotNull
-    public String key;
+    private String key;
 
     @NotNull
-    public String value;
+    private String value;
 }
