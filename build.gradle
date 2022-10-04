@@ -21,7 +21,7 @@ test {
 def lombokVersion = '1.18.24'
 def jacksonCore = '2.13.4'
 def validationVersion = '2.0.1.Final'
-def springBootVersion = '2.7.0'
+def springBootVersion = '2.7.4'
 def postgresVersion = '42.5.0'
 def testContainerVersion = '1.17.3'
 def liquibaseVersion = '4.16.1'
