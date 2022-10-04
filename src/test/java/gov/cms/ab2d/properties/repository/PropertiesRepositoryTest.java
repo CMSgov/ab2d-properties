@@ -22,7 +22,7 @@ class PropertiesRepositoryTest {
     private PropertiesRepository propertiesRepository;
 
     @Container
-    private static final PostgreSQLContainer postgreSQLContainer = new AB2DPostgresqlContainer();
+    private static final PostgreSQLContainer POSTGRE_SQL_CONTAINER = new AB2DPostgresqlContainer();
 
     @Test
     void testSave() {
