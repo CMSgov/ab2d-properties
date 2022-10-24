@@ -11,6 +11,7 @@ DEPLOYMENT_ENV=$DEPLOYMENT_ENV
 # Set default AWS region
 
   export AWS_DEFAULT_REGION="us-east-1"
+  export IMAGE_TAG="properties-service"
 
 if [ "${CLOUD_TAMER}" != "false" ] && [ "${CLOUD_TAMER}" != "true" ]; then
   echo "ERROR: CLOUD_TAMER parameter must be true or false"
