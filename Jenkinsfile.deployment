@@ -11,8 +11,21 @@ pipeline {
         gradle "gradle-7.2"
         jdk 'openjdk17'
     }
+    
 
     stages {
+   
+    stage ('Set Environment') {
+      steps {
+        script {
+	        sh '''
+            set -e
+            if [[ ${DEPLOYMENT_ENV} = "ab2d-east-impl" ]]; then AWS_ACCOUNT_ID=330810004472
+            elif [[ ${DEPLOYMENT_ENV} = "ab2d-dev" ]]; then AWS_ACCOUNT_ID=349849222861
+            elif [[ ${DEPLOYMENT_ENV} = "ab2d-sbx-sandbox" ]]; then AWS_ACCOUNT_ID=777200079629
+            elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod" ]]; then AWS_ACCOUNT_ID=595094747606
+            elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod-test" ]]; then AWS_ACCOUNT_ID=595094747606
+            else echo "DEPLOYMENT_ENV variable is not set."; fi
 
         stage ('Build Libraries') {
             steps {
