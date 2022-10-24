@@ -2,7 +2,9 @@
 
 set -e # Turn on exit on error
 
-ECR_REPO_ENV_AWS_ACCOUNT_NUMBER=$ECR_REPO_ENV_AWS_ACCOUNT_NUMBER
+
+# ECR_REPO_ENV_AWS_ACCOUNT_NUMBER=$ECR_REPO_ENV_AWS_ACCOUNT_NUMBER
+AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID
 ECR_REPO_ENV=$ECR_REPO_ENV
 DEPLOYMENT_ENV=$DEPLOYMENT_ENV
 
@@ -18,7 +20,7 @@ elif [ "${CLOUD_TAMER}" = "false" ]; then
 
   # Import the "get temporary AWS credentials via AWS STS assume role" function
   source "./scripts/fn_get_temporary_aws_credentials_via_aws_sts_assume_role.sh"
-  fn_get_temporary_aws_credentials_via_aws_sts_assume_role "${ECR_REPO_ENV_AWS_ACCOUNT_NUMBER}" "${ECR_REPO_ENV}"
+  fn_get_temporary_aws_credentials_via_aws_sts_assume_role "${AWS_ACCOUNT_ID}" "${ECR_REPO_ENV}"
 
 else # [ "${CLOUD_TAMER}" == "true" ]
 
@@ -29,7 +31,7 @@ else # [ "${CLOUD_TAMER}" == "true" ]
 
   # Import the "get temporary AWS credentials via CloudTamer API" function
   source "./scripts/fn_get_temporary_aws_credentials_via_cloudtamer_api.sh"
-  fn_get_temporary_aws_credentials_via_cloudtamer_api "${ECR_REPO_ENV_AWS_ACCOUNT_NUMBER}" "${ECR_REPO_ENV}"
+  fn_get_temporary_aws_credentials_via_cloudtamer_api "${AWS_ACCOUNT_ID}" "${ECR_REPO_ENV}"
 
 fi
 
