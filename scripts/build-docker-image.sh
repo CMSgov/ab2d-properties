@@ -8,6 +8,10 @@ AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID
 ECR_REPO_ENV=$ECR_REPO_ENV
 DEPLOYMENT_ENV=$DEPLOYMENT_ENV
 
+# Set default AWS region
+
+  export AWS_DEFAULT_REGION="us-east-1"
+
 if [ "${CLOUD_TAMER}" != "false" ] && [ "${CLOUD_TAMER}" != "true" ]; then
   echo "ERROR: CLOUD_TAMER parameter must be true or false"
   exit 1
