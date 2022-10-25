@@ -8,11 +8,20 @@ AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID
 ECR_REPO_ENV=$ECR_REPO_ENV
 DEPLOYMENT_ENV=$DEPLOYMENT_ENV
 
-# Set default AWS region
+# Set default AWS region and tag
 
   export AWS_DEFAULT_REGION="us-east-1"
   export IMAGE_TAG="properties-service"
-
+  
+if [[ ${DEPLOYMENT_ENV} = "ab2d-east-impl" ]]; then AWS_ACCOUNT_ID=330810004472
+elif [[ ${DEPLOYMENT_ENV} = "ab2d-dev" ]]; then AWS_ACCOUNT_ID=349849222861
+elif [[ ${DEPLOYMENT_ENV} = "ab2d-sbx-sandbox" ]]; then AWS_ACCOUNT_ID=777200079629
+elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod" ]]; then AWS_ACCOUNT_ID=595094747606
+elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod-test" ]]; then AWS_ACCOUNT_ID=595094747606
+else echo "DEPLOYMENT_ENV variable is not set."; 
+     exit 1
+fi
+            
 if [ "${CLOUD_TAMER}" != "false" ] && [ "${CLOUD_TAMER}" != "true" ]; then
   echo "ERROR: CLOUD_TAMER parameter must be true or false"
   exit 1
