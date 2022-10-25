@@ -18,7 +18,7 @@ pipeline {
     stage ('Set Environment') {
       steps {
         script {
-	        sh '''
+	   sh '''
             set -e
             if [[ ${DEPLOYMENT_ENV} = "ab2d-east-impl" ]]; then AWS_ACCOUNT_ID=330810004472
             elif [[ ${DEPLOYMENT_ENV} = "ab2d-dev" ]]; then AWS_ACCOUNT_ID=349849222861
@@ -26,6 +26,10 @@ pipeline {
             elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod" ]]; then AWS_ACCOUNT_ID=595094747606
             elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod-test" ]]; then AWS_ACCOUNT_ID=595094747606
             else echo "DEPLOYMENT_ENV variable is not set."; fi
+	   sh ''' 
+	 }
+	}
+       }
 
         stage ('Build Libraries') {
             steps {
