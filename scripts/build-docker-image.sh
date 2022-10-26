@@ -13,14 +13,14 @@ DEPLOYMENT_ENV=$DEPLOYMENT_ENV
   export AWS_DEFAULT_REGION="us-east-1"
   export IMAGE_TAG="properties-service"
   
-if [[ ${DEPLOYMENT_ENV} = "ab2d-east-impl" ]]; then AWS_ACCOUNT_ID=
-elif [[ ${DEPLOYMENT_ENV} = "ab2d-dev" ]]; then AWS_ACCOUNT_ID=
-elif [[ ${DEPLOYMENT_ENV} = "ab2d-sbx-sandbox" ]]; then AWS_ACCOUNT_ID=
-elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod" ]]; then AWS_ACCOUNT_ID=
-elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod-test" ]]; then AWS_ACCOUNT_ID=
-else echo "DEPLOYMENT_ENV variable is not set."; 
-     exit 1
-fi
+# if [[ ${DEPLOYMENT_ENV} = "ab2d-east-impl" ]]; then AWS_ACCOUNT_ID=
+# elif [[ ${DEPLOYMENT_ENV} = "ab2d-dev" ]]; then AWS_ACCOUNT_ID=
+# elif [[ ${DEPLOYMENT_ENV} = "ab2d-sbx-sandbox" ]]; then AWS_ACCOUNT_ID=
+# elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod" ]]; then AWS_ACCOUNT_ID=
+# elif [[ ${DEPLOYMENT_ENV} = "ab2d-east-prod-test" ]]; then AWS_ACCOUNT_ID=
+# else echo "DEPLOYMENT_ENV variable is not set."; 
+#      exit 1
+# fi
             
 if [ "${CLOUD_TAMER}" != "false" ] && [ "${CLOUD_TAMER}" != "true" ]; then
   echo "ERROR: CLOUD_TAMER parameter must be true or false"
