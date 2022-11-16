@@ -23,7 +23,7 @@ import java.util.List;
 public class HealthCheckController {
     public static final String HEALTH_ENDPOINT = "/health";
     private final DataSource dataSource;
-    private final static List<String> urls = List.of("http://www.google.com", "http://www.facebook.com");
+    private final static List<String> URLS = List.of("http://www.google.com", "http://www.facebook.com");
 
     @GetMapping(HEALTH_ENDPOINT)
     public ResponseEntity<Void> getHealth(HttpServletRequest request) {
@@ -39,7 +39,7 @@ public class HealthCheckController {
                 // Check for access to the database
                 isDbAvailable(dataSource) &&
                         // Internet is accessible
-                        isAnyAvailable(urls);
+                        isAnyAvailable(URLS);
     }
 
     /**
