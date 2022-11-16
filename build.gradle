@@ -1,15 +1,15 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.4'
-    id 'com.jfrog.artifactory' version '4.29.1' apply false
-    id "org.sonarqube" version "3.4.0.2513"
+    id 'org.springframework.boot' version '2.7.5'
+    id 'com.jfrog.artifactory' version '4.29.3' apply false
+    id "org.sonarqube" version "3.5.0.2730"
     id "gov.cms.ab2d.plugin" version "0.0.1-SNAPSHOT"
     id "maven-publish"
     id 'jacoco'
     id 'org.cyclonedx.bom' version '1.7.2' apply true
 }
 
-version = 1.0
+version = 1.0.1
 group = "gov.cms.ab2d"
 
 repositories {
@@ -23,12 +23,12 @@ test {
 }
 
 def lombokVersion = '1.18.24'
-def jacksonCore = '2.13.4'
+def jacksonCore = '2.14.0'
 def validationVersion = '2.0.1.Final'
-def springBootVersion = '2.7.4'
+def springBootVersion = '2.7.5'
 def postgresVersion = '42.5.0'
 def testContainerVersion = '1.17.5'
-def liquibaseVersion = '4.17.0'
+def liquibaseVersion = '4.17.2'
 
 allprojects {
     apply plugin: 'gov.cms.ab2d.plugin'
