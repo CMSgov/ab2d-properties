@@ -23,7 +23,7 @@ import java.util.List;
 public class HealthCheckController {
     public static final String HEALTH_ENDPOINT = "/health";
     private final DataSource dataSource;
-    private final static List<String> URLS = List.of("http://www.google.com", "http://www.facebook.com");
+    private static final List<String> URLS = List.of("http://www.google.com", "http://www.facebook.com");
 
     @GetMapping(HEALTH_ENDPOINT)
     public ResponseEntity<Void> getHealth(HttpServletRequest request) {
