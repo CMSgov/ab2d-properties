@@ -20,3 +20,7 @@ DELETE /properties/{key}
 POST /properties?key={key}&value={value}
 
 - Create a property given a key and value
+
+GET /health
+
+- Returns a status code of 200 if this service can connect to the database and the internet
