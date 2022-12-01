@@ -1,12 +1,16 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.4'
-    id 'com.jfrog.artifactory' version '4.29.1' apply false
-    id "org.sonarqube" version "3.4.0.2513"
+    id 'org.springframework.boot' version '2.7.5'
+    id 'com.jfrog.artifactory' version '4.29.3' apply false
+    id "org.sonarqube" version "3.5.0.2730"
     id "gov.cms.ab2d.plugin" version "0.0.1-SNAPSHOT"
     id "maven-publish"
     id 'jacoco'
+    id 'org.cyclonedx.bom' version '1.7.2' apply true
 }
+
+version = '1.0.1'
+group = "gov.cms.ab2d"
 
 repositories {
     mavenCentral()
@@ -19,15 +23,17 @@ test {
 }
 
 def lombokVersion = '1.18.24'
-def jacksonCore = '2.13.4'
+def jacksonCore = '2.14.0'
 def validationVersion = '2.0.1.Final'
-def springBootVersion = '2.7.4'
+def springBootVersion = '2.7.5'
 def postgresVersion = '42.5.0'
 def testContainerVersion = '1.17.5'
-def liquibaseVersion = '4.17.0'
+def liquibaseVersion = '4.17.2'
 
 allprojects {
     apply plugin: 'gov.cms.ab2d.plugin'
+    apply plugin: "org.cyclonedx.bom"
+
     dependencies {
         implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
         implementation "org.liquibase:liquibase-core:${liquibaseVersion}"
@@ -45,6 +51,29 @@ allprojects {
         testImplementation "org.testcontainers:testcontainers:${testContainerVersion}"
         testImplementation "org.testcontainers:postgresql:${testContainerVersion}"
         testImplementation "org.testcontainers:junit-jupiter:${testContainerVersion}"
+        compileOnly "org.cyclonedx:cyclonedx-gradle-plugin:1.4.0"
+        compileOnly "org.cyclonedx:cyclonedx-core-java:5.0.4"
+    }
+
+    cyclonedxBom {
+        // includeConfigs is the list of configuration names to include when generating the BOM (leave empty to include every configuration)
+        includeConfigs = ["runtimeClasspath"]
+        // skipConfigs is a list of configuration names to exclude when generating the BOM
+        skipConfigs = ["compileClasspath", "testCompileClasspath"]
+        // Specified the type of project being built. Defaults to 'library'
+        projectType = "library"
+        // Specified the version of the CycloneDX specification to use. Defaults to 1.4.
+        schemaVersion = "1.4"
+        // Boms destination directory (defaults to build/reports)
+        destination = file("build/reports")
+        // The file name for the generated BOMs (before the file format suffix). Defaults to 'bom'
+        outputName = "bom"
+        // The file format generated, can be xml, json or all for generating both
+        outputFormat = "all"
+        // Exclude BOM Serial Number
+        includeBomSerialNumber = false
+        // Override component version
+        componentVersion = "2.0.0"
     }
 }
 
