@@ -11,9 +11,11 @@ pipeline {
         gradle "gradle-7.2"
         jdk 'openjdk17'
     }
+    
 
     stages {
-
+   
+    
         stage ('Build Libraries') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'artifactoryuserpass', usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) { 

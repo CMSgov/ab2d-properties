@@ -2,10 +2,18 @@
 
 set -e # Turn on exit on error
 
-ECR_REPO_ENV_AWS_ACCOUNT_NUMBER=$ECR_REPO_ENV_AWS_ACCOUNT_NUMBER
+
+# ECR_REPO_ENV_AWS_ACCOUNT_NUMBER=$ECR_REPO_ENV_AWS_ACCOUNT_NUMBER
+AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID
 ECR_REPO_ENV=$ECR_REPO_ENV
 DEPLOYMENT_ENV=$DEPLOYMENT_ENV
 
+# Set default AWS region and tag
+
+  export AWS_DEFAULT_REGION="us-east-1"
+  export IMAGE_TAG="properties-service"
+  
+            
 if [ "${CLOUD_TAMER}" != "false" ] && [ "${CLOUD_TAMER}" != "true" ]; then
   echo "ERROR: CLOUD_TAMER parameter must be true or false"
   exit 1
@@ -18,7 +26,7 @@ elif [ "${CLOUD_TAMER}" = "false" ]; then
 
   # Import the "get temporary AWS credentials via AWS STS assume role" function
   source "./scripts/fn_get_temporary_aws_credentials_via_aws_sts_assume_role.sh"
-  fn_get_temporary_aws_credentials_via_aws_sts_assume_role "${ECR_REPO_ENV_AWS_ACCOUNT_NUMBER}" "${ECR_REPO_ENV}"
+  fn_get_temporary_aws_credentials_via_aws_sts_assume_role "${AWS_ACCOUNT_ID}" "${ECR_REPO_ENV}"
 
 else # [ "${CLOUD_TAMER}" == "true" ]
 
@@ -29,7 +37,7 @@ else # [ "${CLOUD_TAMER}" == "true" ]
 
   # Import the "get temporary AWS credentials via CloudTamer API" function
   source "./scripts/fn_get_temporary_aws_credentials_via_cloudtamer_api.sh"
-  fn_get_temporary_aws_credentials_via_cloudtamer_api "${ECR_REPO_ENV_AWS_ACCOUNT_NUMBER}" "${ECR_REPO_ENV}"
+  fn_get_temporary_aws_credentials_via_cloudtamer_api "${AWS_ACCOUNT_ID}" "${ECR_REPO_ENV}"
 
 fi
 
@@ -41,8 +49,8 @@ aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --usernam
 ############# Building docker image ###############
 echo Build started on `date`
 echo Building the Docker image...          
-docker build -t $ECR_REPO_ENV:$IMAGE_TAG .
-docker tag $ECR_REPO_ENV:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_ENV:$IMAGE_TAG 
+docker build --no-cache -t $ECR_REPO_ENV:$IMAGE_TAG .
+docker tag $ECR_REPO_ENV:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_ENV:$IMAGE_TAG
 
 ##### pushing docker image to ECR ################
 echo Build completed on `date`
