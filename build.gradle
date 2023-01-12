@@ -41,7 +41,7 @@ allprojects {
         implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
         implementation "com.fasterxml.jackson.core:jackson-core:${jacksonCore}"
         implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonCore}"
-        implementation 'org.jetbrains:annotations:23.0.0'
+        implementation 'org.jetbrains:annotations:24.0.0'
         implementation "org.projectlombok:lombok:${lombokVersion}"
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         runtimeOnly "org.postgresql:postgresql:${postgresVersion}"
