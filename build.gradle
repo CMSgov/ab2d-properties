@@ -22,7 +22,7 @@ test {
     finalizedBy jacocoTestReport // report is always generated after tests run
 }
 
-def lombokVersion = '1.18.24'
+def lombokVersion = '1.18.26'
 def jacksonCore = '2.14.1'
 def validationVersion = '2.0.1.Final'
 def springBootVersion = '2.7.5'
