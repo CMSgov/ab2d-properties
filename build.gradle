@@ -6,7 +6,7 @@ plugins {
     id "gov.cms.ab2d.plugin" version "0.0.1-SNAPSHOT"
     id "maven-publish"
     id 'jacoco'
-    id 'org.cyclonedx.bom' version '1.7.3' apply true
+    id 'org.cyclonedx.bom' version '1.7.4' apply true
 }
 
 version = '1.0.2'
