@@ -52,7 +52,7 @@ allprojects {
         testImplementation "org.testcontainers:postgresql:${testContainerVersion}"
         testImplementation "org.testcontainers:junit-jupiter:${testContainerVersion}"
         compileOnly "org.cyclonedx:cyclonedx-gradle-plugin:1.4.0"
-        compileOnly "org.cyclonedx:cyclonedx-core-java:7.3.1"
+        compileOnly "org.cyclonedx:cyclonedx-core-java:7.3.2"
     }
 
     cyclonedxBom {
