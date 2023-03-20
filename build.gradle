@@ -26,7 +26,7 @@ def lombokVersion = '1.18.26'
 def jacksonCore = '2.14.2'
 def validationVersion = '2.0.1.Final'
 def springBootVersion = '2.7.5'
-def postgresVersion = '42.5.4'
+def postgresVersion = '42.6.0'
 def testContainerVersion = '1.17.6'
 def liquibaseVersion = '4.19.0'
 
