@@ -30,6 +30,30 @@ The interface provides the following endpoints:
 
 - Returns a status code of 200 if this service can connect to the database and the internet
 
+## Install and Use Pre-commit
+
+Anyone committing to this repo must use the pre-commit hook to lower the likelihood that secrets will be exposed.
+
+### Step 1: Install pre-commit
+
+You can install pre-commit using the MacOS package manager Homebrew:
+
+```sh
+brew install pre-commit
+```
+
+Other installation options can be found in the [pre-commit documentation](https://pre-commit.com/#install).
+
+### Step 2: Install the hooks
+
+Run the following command to install the gitleaks hook:
+
+```sh
+pre-commit install
+```
+
+This will download and install the pre-commit hooks specified in `.pre-commit-config.yaml`.
+
 ## Running the application
 
 This application is a spring boot application which depends on a configurable database connection defined in the 
