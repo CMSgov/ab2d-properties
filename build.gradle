@@ -23,7 +23,7 @@ test {
 }
 
 def lombokVersion = '1.18.26'
-def jacksonCore = '2.14.2'
+def jacksonCore = '2.15.1'
 def validationVersion = '2.0.1.Final'
 def springBootVersion = '2.7.5'
 def postgresVersion = '42.5.4'
