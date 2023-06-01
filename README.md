@@ -60,10 +60,17 @@ This application is a spring boot application which depends on a configurable da
 [application.properties](https://github.com/CMSgov/ab2d-properties/blob/enhancement/ab2d-documentation_enhancement/src/main/resources/application.properties) file. This application also uses liquibase to create
 the tables in the database at startup and provide DB versioning.
 
-To create the spring boot jar:
+### To create the spring boot jar:
 
 ```gradle -b build.gradle bootJar```
 
-To execute the jar:
+By default: The jar is created in ```./build/libs```.
 
-```java -jar properties.jar``` (or whatever the built jar's name is)
+### To execute the jar:
+
+```java -jar ./build/libs/<name_of_properties_jar>.jar``` 
+
+For example:
+
+```java -jar ./build/libs/ab2d-properties-1.0.3.jar```
+
