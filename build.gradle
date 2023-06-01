@@ -1,8 +1,8 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.5'
-    id 'com.jfrog.artifactory' version '4.31.4' apply false
-    id "org.sonarqube" version "4.0.0.2929"
+    id 'com.jfrog.artifactory' version '4.32.0' apply false
+    id "org.sonarqube" version "4.1.0.3113"
     id "gov.cms.ab2d.plugin" version "0.0.1-SNAPSHOT"
     id "maven-publish"
     id 'jacoco'
@@ -22,12 +22,12 @@ test {
     finalizedBy jacocoTestReport // report is always generated after tests run
 }
 
-def lombokVersion = '1.18.26'
-def jacksonCore = '2.14.2'
+def lombokVersion = '1.18.28'
+def jacksonCore = '2.15.2'
 def validationVersion = '2.0.1.Final'
 def springBootVersion = '2.7.5'
-def postgresVersion = '42.5.4'
-def testContainerVersion = '1.17.6'
+def postgresVersion = '42.6.0'
+def testContainerVersion = '1.18.2'
 def liquibaseVersion = '4.19.0'
 
 allprojects {
@@ -41,7 +41,7 @@ allprojects {
         implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
         implementation "com.fasterxml.jackson.core:jackson-core:${jacksonCore}"
         implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonCore}"
-        implementation 'org.jetbrains:annotations:24.0.0'
+        implementation 'org.jetbrains:annotations:24.0.1'
         implementation "org.projectlombok:lombok:${lombokVersion}"
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         runtimeOnly "org.postgresql:postgresql:${postgresVersion}"
@@ -52,7 +52,7 @@ allprojects {
         testImplementation "org.testcontainers:postgresql:${testContainerVersion}"
         testImplementation "org.testcontainers:junit-jupiter:${testContainerVersion}"
         compileOnly "org.cyclonedx:cyclonedx-gradle-plugin:1.4.0"
-        compileOnly "org.cyclonedx:cyclonedx-core-java:7.3.1"
+        compileOnly "org.cyclonedx:cyclonedx-core-java:7.3.2"
     }
 
     cyclonedxBom {
