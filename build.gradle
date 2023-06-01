@@ -28,7 +28,7 @@ def validationVersion = '2.0.1.Final'
 def springBootVersion = '2.7.5'
 def postgresVersion = '42.6.0'
 def testContainerVersion = '1.18.2'
-def liquibaseVersion = '4.19.0'
+def liquibaseVersion = '4.22.0'
 
 allprojects {
     apply plugin: 'gov.cms.ab2d.plugin'
