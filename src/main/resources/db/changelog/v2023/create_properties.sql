@@ -1,5 +1,3 @@
-SELECT setval('property.property_sequence', max(id)) FROM property.properties;
-
 CREATE SEQUENCE IF NOT EXISTS hibernate_sequence START WITH 1 INCREMENT BY 1;
 
 INSERT INTO property.properties (id, key, value)
@@ -17,3 +15,5 @@ INSERT INTO property.properties(id, key, value, created, modified)
 VALUES (nextval('hibernate_sequence'), 'coverage.update.override', 'false', current_timestamp, current_timestamp),
        (nextval('hibernate_sequence'), 'coverage.update.months.past', '3', current_timestamp, current_timestamp),
        (nextval('hibernate_sequence'), 'coverage.update.stuck.hours', '24', current_timestamp, current_timestamp)
+
+SELECT setval('property.property_sequence', max(id)) FROM property.properties;
