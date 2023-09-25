@@ -16,4 +16,5 @@ VALUES (nextval('hibernate_sequence'), 'coverage.update.override', 'false', curr
        (nextval('hibernate_sequence'), 'coverage.update.months.past', '3', current_timestamp, current_timestamp),
        (nextval('hibernate_sequence'), 'coverage.update.stuck.hours', '24', current_timestamp, current_timestamp);
 
-SELECT setval('property.property_sequence', max(id)) FROM property.properties;
+SELECT setval('property.property_sequence', (SELECT max(id) FROM property.properties)+1);
+
