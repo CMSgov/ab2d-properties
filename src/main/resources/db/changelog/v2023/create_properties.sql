@@ -1,3 +1,5 @@
+SELECT setval('property.property_sequence', max(id)) FROM property.properties;
+
 CREATE SEQUENCE IF NOT EXISTS hibernate_sequence START WITH 1 INCREMENT BY 1;
 
 INSERT INTO property.properties (id, key, value)
