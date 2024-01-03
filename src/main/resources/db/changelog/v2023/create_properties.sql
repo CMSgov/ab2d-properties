@@ -25,11 +25,11 @@ VALUES ((select nextval('property.hibernate_sequence')), 'worker.engaged', 'enga
 ON CONFLICT (key) DO UPDATE SET value = 'engaged';
 
 INSERT INTO property.properties (id, key, value)
-VALUES ((select nextval('property.hibernate_sequence')), 'coverage.update.discovery', 'engaged')
+VALUES ((select nextval('property.hibernate_sequence')), 'coverage.update.discovery', 'idle')
 ON CONFLICT (key) DO UPDATE SET value = 'idle';
 
 INSERT INTO property.properties (id, key, value)
-VALUES ((select nextval('property.hibernate_sequence')), 'coverage.update.queueing', 'engaged')
+VALUES ((select nextval('property.hibernate_sequence')), 'coverage.update.queueing', 'idle')
 ON CONFLICT (key) DO UPDATE SET value = 'idle';
 
 INSERT INTO property.properties (id, key, value)
