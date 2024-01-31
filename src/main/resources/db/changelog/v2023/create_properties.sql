@@ -26,11 +26,11 @@ ON CONFLICT (key) DO UPDATE SET value = 'engaged';
 
 INSERT INTO property.properties (id, key, value)
 VALUES ((select nextval('property.hibernate_sequence')), 'coverage.update.discovery', 'engaged')
-ON CONFLICT (key) DO UPDATE SET value = 'idle';
+ON CONFLICT (key) DO UPDATE SET value = 'engaged';
 
 INSERT INTO property.properties (id, key, value)
 VALUES ((select nextval('property.hibernate_sequence')), 'coverage.update.queueing', 'engaged')
-ON CONFLICT (key) DO UPDATE SET value = 'idle';
+ON CONFLICT (key) DO UPDATE SET value = 'engaged';
 
 INSERT INTO property.properties (id, key, value)
 VALUES ((select nextval('property.hibernate_sequence')), 'ZipSupportOn', false)
