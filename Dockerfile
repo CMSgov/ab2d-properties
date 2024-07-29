@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM amazoncorretto:17-al2-jdk
 WORKDIR /usr/src/ab2d-properties
 ADD build/libs/Ab2d-*-Properties-Service-*.jar /usr/src/ab2d-properties/ab2d-properties.jar
 
