@@ -39,8 +39,8 @@ allprojects {
         implementation "org.liquibase:liquibase-core:${liquibaseVersion}"
         implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
         implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-        implementation 'org.springframework:spring-web:5.3.26'
-        implementation 'org.springframework:spring-webmvc:5.3.26'
+        implementation 'org.springframework:spring-web:6.1.12'
+        implementation 'org.springframework:spring-webmvc:6.1.12'
         implementation "com.fasterxml.jackson.core:jackson-core:${jacksonCore}"
         implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonCore}"
         implementation 'org.jetbrains:annotations:24.0.1'
