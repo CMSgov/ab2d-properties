@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.5'
+    id 'org.springframework.boot' version '3.2.8'
     id 'com.jfrog.artifactory' version '4.33.1' apply false
     id "org.sonarqube" version "4.3.0.3225"
     id "gov.cms.ab2d.plugin" version "1.0.2"
@@ -25,8 +25,7 @@ test {
 def lombokVersion = '1.18.28'
 def jacksonCore = '2.15.2'
 def validationVersion = '2.0.1.Final'
-def springBootVersion = '2.7.5'
-def springWebVersion = '5.3.26'
+def springBootVersion = '3.2.8'
 def postgresVersion = '42.7.3'
 def testContainerVersion = '1.18.2'
 def liquibaseVersion = '4.19.0'
@@ -40,8 +39,6 @@ allprojects {
         implementation "org.liquibase:liquibase-core:${liquibaseVersion}"
         implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
         implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-        implementation "org.springframework:spring-web:${springWebVersion}"
-        implementation "org.springframework:spring-webmvc:${springWebVersion}"
         implementation "com.fasterxml.jackson.core:jackson-core:${jacksonCore}"
         implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonCore}"
         implementation 'org.jetbrains:annotations:24.0.1'
