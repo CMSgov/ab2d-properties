@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.8'
+ //   id 'org.springframework.boot' version '3.2.8'
     id 'com.jfrog.artifactory' version '4.33.1' apply false
     id "org.sonarqube" version "4.3.0.3225"
     id "gov.cms.ab2d.plugin" version "1.0.2"
@@ -17,6 +17,10 @@ repositories {
     mavenLocal()
 }
 
+compileJava {
+    options.compilerArgs << "-parameters"
+}
+
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport // report is always generated after tests run
@@ -27,8 +31,8 @@ def jacksonCore = '2.15.2'
 def validationVersion = '2.0.1.Final'
 def springBootVersion = '3.2.8'
 def postgresVersion = '42.7.3'
-def testContainerVersion = '1.18.2'
-def liquibaseVersion = '4.19.0'
+def testContainerVersion = '1.20.1'
+def liquibaseVersion = '4.29.2'
 
 allprojects {
     apply plugin: 'gov.cms.ab2d.plugin'
