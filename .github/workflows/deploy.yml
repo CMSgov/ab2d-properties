@@ -1,4 +1,4 @@
-name: Deploy contracts
+name: Deploy Properties
 
 on:
   workflow_call:
@@ -33,5 +33,5 @@ jobs:
           DEPLOYMENT_ENV: ${{ vars[format('{0}_DEPLOYMENT_ENV', inputs.environment)] }}
         run: |
           echo "Deploying contracts service"
-          aws ecs update-service --cluster "$DEPLOYMENT_ENV-microservice-cluster" --service ab2d-contracts-service --force-new-deployment > /dev/null
-          aws ecs wait services-stable --cluster "$DEPLOYMENT_ENV-microservice-cluster" --services ab2d-contracts-service
+          aws ecs update-service --cluster "$DEPLOYMENT_ENV-microservice-cluster" --service ab2d-properties-service --force-new-deployment > /dev/null
+          aws ecs wait services-stable --cluster "$DEPLOYMENT_ENV-microservice-cluster" --services ab2d-properties-service
