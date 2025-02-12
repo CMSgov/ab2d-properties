@@ -50,9 +50,6 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: arn:aws:iam::${{ secrets[format('{0}_ACCOUNT', inputs.environment)] }}:role/delegatedadmin/developer/ab2d-${{ inputs.environment }}-github-actions
 
-      - name: List build directory contents
-        run: ls -l /opt/actions-runner/_work/ab2d-properties/ab2d-properties/build/libs/
-
       - name: Build and push docker image
         env:
           ACCOUNT: ${{ secrets[format('{0}_ACCOUNT', inputs.environment)] }}
@@ -71,6 +68,8 @@ jobs:
 
           TAG="$ECR_URI:properties-service"
 
+          cd /opt/actions-runner/_work/ab2d-properties/ab2d-properties/
+          
           docker build -t $TAG .
 
           # Push to special tag for promotion if this is run on a push to main
