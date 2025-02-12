@@ -67,11 +67,9 @@ jobs:
           ECR_URI="$ECR_DOMAIN/$ECR_REPO"
 
           TAG="$ECR_URI:properties-service"
-
-          cd /opt/actions-runner/_work/ab2d-properties/ab2d-properties/
           
-          docker build -t $TAG .
-
+          docker build -t $TAG /opt/actions-runner/_work/ab2d-properties/ab2d-properties/
+          
           # Push to special tag for promotion if this is run on a push to main
           if [ "$GITHUB_REF" == "refs/heads/main" ]; then
             SHA_SHORT=$(git rev-parse --short HEAD)
