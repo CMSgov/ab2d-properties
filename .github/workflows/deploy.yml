@@ -20,6 +20,9 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+     env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      DEPLOYMENT_ENV: ${{ vars[format('{0}_DEPLOYMENT_ENV', inputs.environment)] }}
   
     steps:
       - name: Assume role in AB2D account for this environment
