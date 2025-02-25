@@ -20,9 +20,7 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
-    permissions:
-      contents: read
-      id-token: write
+  
     steps:
       - name: Assume role in AB2D account for this environment
         uses: aws-actions/configure-aws-credentials@v4
