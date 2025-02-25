@@ -19,15 +19,16 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       id-token: write
     steps:
-      - uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
+      - name: Assume role in AB2D account for this environment
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ${{ vars.AWS_REGION }}
-          role-to-assume: arn:aws:iam::${{ secrets[format('{0}_ACCOUNT', inputs.environment)] }}:role/delegatedadmin/developer/ab2d-${{ inputs.environment }}-github-actions
+          role-to-assume: arn:aws:iam::${{ secrets[format('{0}_ACCOUNT_ID', inputs.environment)] }}:role/delegatedadmin/developer/ab2d-${{ inputs.environment }}-github-actions
       - name: Deploy ECS service to run on latest image in ECR
         env:
           DEPLOYMENT_ENV: ${{ vars[format('{0}_DEPLOYMENT_ENV', inputs.environment)] }}
