@@ -19,12 +19,13 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       id-token: write
     steps:
-      - uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
+      - name: Assume role in AB2D account for this environment
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: arn:aws:iam::${{ secrets[format('{0}_ACCOUNT', inputs.environment)] }}:role/delegatedadmin/developer/ab2d-${{ inputs.environment }}-github-actions
@@ -32,6 +33,6 @@ jobs:
         env:
           DEPLOYMENT_ENV: ${{ vars[format('{0}_DEPLOYMENT_ENV', inputs.environment)] }}
         run: |
-          echo "Deploying contracts service"
+          echo "Deploying properties service"
           aws ecs update-service --cluster "$DEPLOYMENT_ENV-microservice-cluster" --service ab2d-properties-service --force-new-deployment > /dev/null
           aws ecs wait services-stable --cluster "$DEPLOYMENT_ENV-microservice-cluster" --services ab2d-properties-service
