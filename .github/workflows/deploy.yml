@@ -34,6 +34,6 @@ jobs:
         env:
           DEPLOYMENT_ENV: ${{ vars[format('{0}_DEPLOYMENT_ENV', inputs.environment)] }}
         run: |
-          echo "Deploying properties service"
-          aws ecs update-service --cluster "test-microservice-cluster" --service ab2d-properties-service --force-new-deployment > /dev/null
-          aws ecs wait services-stable --cluster "test-microservice-cluster" --services ab2d-properties-service
+          echo "Deploying service $DEPLOYMENT_ENV"
+          aws ecs update-service --cluster "$DEPLOYMENT_ENV" --service ab2d-properties-service --force-new-deployment > /dev/null
+          aws ecs wait services-stable --cluster "$DEPLOYMENT_ENV" --services ab2d-properties-service
