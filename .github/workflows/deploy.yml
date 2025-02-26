@@ -1,0 +1,39 @@
+name: Deploy Properties
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: choice
+        options:
+          - dev
+          - test
+          - sbx
+          - prod
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      DEPLOYMENT_ENV: ${{ vars[format('{0}_DEPLOYMENT_ENV', inputs.environment)] }}
+  
+    steps:
+      - name: Assume role in AB2D account for this environment
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ vars.AWS_REGION }}
+          role-to-assume: arn:aws:iam::${{ secrets[format('{0}_ACCOUNT', inputs.environment)] }}:role/delegatedadmin/developer/ab2d-${{ inputs.environment }}-github-actions
+      - name: Deploy ECS service to run on latest image in ECR
+        env:
+          DEPLOYMENT_ENV: ${{ vars[format('{0}_DEPLOYMENT_ENV', inputs.environment)] }}
+        run: |
+          echo "Deploying properties service"
+          aws ecs update-service --cluster "test-microservice-cluster" --service ab2d-properties-service --force-new-deployment > /dev/null
+          aws ecs wait services-stable --cluster "test-microservice-cluster" --services ab2d-properties-service
