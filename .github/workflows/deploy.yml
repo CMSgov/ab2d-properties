@@ -16,6 +16,7 @@ on:
           - test
           - sbx
           - prod
+          - prod_test
 
 jobs:
   deploy:
