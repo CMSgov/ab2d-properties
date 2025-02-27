@@ -28,13 +28,14 @@ jobs:
     steps:
       - name: Assume role in AB2D account for this environment
         uses: aws-actions/configure-aws-credentials@v4
+        env:
+          ACCOUNT: ${{ inputs.environment == 'prod_test' && 'prod' || inputs.environment }}
         with:
           aws-region: ${{ vars.AWS_REGION }}
-          role-to-assume: arn:aws:iam::${{ secrets[format('{0}_ACCOUNT', inputs.environment)] }}:role/delegatedadmin/developer/ab2d-${{ inputs.environment }}-github-actions
+          role-to-assume: arn:aws:iam::${{ secrets[format('{0}_ACCOUNT', env.ACCOUNT)] }}:role/delegatedadmin/developer/ab2d-${{ env.ACCOUNT }}-github-actions
       - name: Deploy ECS service to run on latest image in ECR
         env:
           DEPLOYMENT_ENV: ab2d-${{ vars[format('{0}_DEPLOYMENT_ENV', inputs.environment)] }}-microservice-cluster
-          
         run: |
           echo "Deploying service $DEPLOYMENT_ENV"
           aws ecs update-service --cluster "$DEPLOYMENT_ENV" --service ab2d-properties-service --force-new-deployment > /dev/null
