@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.8'
+    id 'org.springframework.boot' version '3.4.4'
     id 'com.jfrog.artifactory' version '4.33.1' apply false
     id "org.sonarqube" version "4.3.0.3225"
     id "gov.cms.ab2d.plugin" version "1.0.2"
@@ -27,12 +27,12 @@ test {
 }
 
 def lombokVersion = '1.18.28'
-def jacksonCore = '2.15.2'
+def jacksonCore = '2.18.3'
 def validationVersion = '2.0.1.Final'
-def springBootVersion = '3.2.8'
+def springBootVersion = '3.4.4'
 def postgresVersion = '42.7.3'
-def testContainerVersion = '1.20.1'
-def liquibaseVersion = '4.29.2'
+def testContainerVersion = '1.20.6'
+def liquibaseVersion = '4.31.1'
 
 allprojects {
     apply plugin: 'gov.cms.ab2d.plugin'
@@ -80,6 +80,6 @@ allprojects {
         componentVersion = "2.0.0"
     }
 }
-
-sourceCompatibility = 17
-targetCompatibility = 17
+//
+//sourceCompatibility = 17
+//targetCompatibility = 17
