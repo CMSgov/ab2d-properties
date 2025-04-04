@@ -28,7 +28,6 @@ test {
 
 def lombokVersion = '1.18.28'
 def jacksonCore = '2.18.3'
-def validationVersion = '2.0.1.Final'
 def springBootVersion = '3.4.4'
 def postgresVersion = '42.7.3'
 def testContainerVersion = '1.20.6'
@@ -50,7 +49,6 @@ allprojects {
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         runtimeOnly "org.postgresql:postgresql:${postgresVersion}"
         implementation "org.projectlombok:lombok:${lombokVersion}"
-        implementation "javax.validation:validation-api:${validationVersion}"
         testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
         testImplementation "org.testcontainers:testcontainers:${testContainerVersion}"
         testImplementation "org.testcontainers:postgresql:${testContainerVersion}"
@@ -80,6 +78,4 @@ allprojects {
         componentVersion = "2.0.0"
     }
 }
-//
-//sourceCompatibility = 17
-//targetCompatibility = 17
+
