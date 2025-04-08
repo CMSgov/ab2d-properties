@@ -1,4 +1,4 @@
-name: promote-properties
+name: promote
 on:
   workflow_call:
     inputs:
