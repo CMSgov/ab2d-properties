@@ -1,5 +1,6 @@
 package gov.cms.ab2d.properties.model;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 
 @Entity
