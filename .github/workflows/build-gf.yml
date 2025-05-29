@@ -3,19 +3,7 @@ run-name: build-gf ${{ inputs.environment }}
 
 on:
   workflow_call:
-    inputs:
-      environment:
-        required: true
-        type: string
   workflow_dispatch:
-    inputs:
-      environment:
-        description: AB2D environment
-        required: true
-        type: choice
-        options:
-          - dev
-          - test
 
 jobs:
 
