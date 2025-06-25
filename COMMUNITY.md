@@ -8,9 +8,11 @@ ab2d-properties is supported by a dedicated team of individuals fulfilling vario
 
 Roles to include, but not limited to: Project Owner, Technical Lead, Developers/Contributors, Community Manager, Security Team, Policy Advisor, Contracting Officer's Representative, Compliance Officer, Procurement Officer -->
 
-| Role   | Name    | Affiliation    |
+| Role | Github Handle | Affiliation |
 | :----- | :------ | :------------- |
-| {role} | {names} | {affiliations} |
+| Technical Lead | Sadibhatla | CMS/DASG/Contractor  |
+| Developers/Contributors | bennavapbc | CMS/DASG/Contractor  |
+| Developers/Contributors | smirnovaae | CMS/DASG/Contractor  |
 
 <!-- TODO: A CODEOWNERS.md file is available in .github to define individuals responsible for specific parts of the codebase. Provide a reference to this file if used:
 
@@ -25,19 +27,25 @@ The members of ab2d-properties community are responsible for guiding its develop
 
 ### Maintainers:
 
--
+- @smirnovaae
+- @Sadibhatla
+- @bennavapbc
 
 <!-- TODO: List the individuals who are the maintainers. What groups/domains are maintainers a part of? Does your project have domains/areas that are maintained by specific people? List @USERNAMES directly, or any @ALIASES for groups/teams. -->
 
 ### Approvers:
 
--
+- @smirnovaae
+- @Sadibhatla
+- @bennavapbc
 
 <!-- TODO: Who are the project approvers? List out @USERNAMES where possible so they can be tagged in issues/PRs directly. -->
 
 ### Reviewers:
 
--
+- @smirnovaae
+- @Sadibhatla
+- @bennavapbc
 
 <!-- TODO: Who are the project reviewers? List out @USERNAMES where possible so they can be tagged in issues/PRs directly. -->
 
