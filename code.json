@@ -1,6 +1,6 @@
 {
   "name": "ab2d-properties",
-  "description": "This service is used to save runtime variables for services to access. U",
+  "description": "This service is used to save runtime variables for services to access.",
   "longDescription": "This service is used to save runtime variables for services to access. Unlike an envrionment variable, these values can be updated at runtime and shared across services. Individual application code should retrieve the values of these properties at any time, allowing them to change their behaviour across the system or coordinate services.",
   "status": "production",
   "permissions": {
