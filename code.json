@@ -1,0 +1,71 @@
+{
+  "name": "ab2d-properties",
+  "description": "This service is used to save runtime variables for services to access.",
+  "longDescription": "This service is used to save runtime variables for services to access. Unlike an envrionment variable, these values can be updated at runtime and shared across services. Individual application code should retrieve the values of these properties at any time, allowing them to change their behaviour across the system or coordinate services.",
+  "status": "production",
+  "permissions": {
+    "licenses": [
+      {
+        "URL": "LICENSE",
+        "name": "CC0-1.0"
+      }
+    ],
+    "usageType": "openSource"
+  },
+  "organization": "Centers for Medicare & Medicaid Services",
+  "repositoryURL": "https://github.com/CMSgov/ab2d-properties",
+  "repositoryHost": "github.com/CMSgov",
+  "repositoryVisibility": "public",
+  "vcs": "git",
+  "laborHours": null,
+  "reuseFrequency": {
+    "forks": 0
+  },
+  "platforms": [
+    "other"
+  ],
+  "categories": [
+    "healthcare"
+  ],
+  "softwareType": "standalone/backend",
+  "languages": [
+    "Java"
+  ],
+  "maintenance": "contract",
+  "contractNumber": "3",
+  "date": {
+    "created": "2022-07-06T07:39:01-10:00",
+    "lastModified": "2025-06-25T02:05:17+0000",
+    "metadataLastUpdated": "2025-06-25T02:05:17+0000"
+  },
+  "tags": [
+    "dsacms-tier3"
+  ],
+  "contact": {
+    "email": "ab2d@cms.hhs.gov",
+    "name": "CMS Open Source Program Office"
+  },
+  "feedbackMechanisms": [
+    "https://github.com/CMSgov/ab2d-properties/issues"
+  ],
+  "localisation": "false",
+  "repositoryType": "Apps",
+  "userInput": "No",
+  "fismaLevel": "Low",
+  "group": "CMS",
+  "projects": [],
+  "systems": [],
+  "upstream": [
+    "hhttps://github.com/CMSgov/ab2d-properties/network/dependencies"
+  ],
+  "subsetInHealthcare": [
+    "Policy",
+    "Operational",
+    "Medicare",
+    "Medicaid"
+  ],
+  "userType": [
+    "Providers"
+  ],
+  "maturityModelTier": 3
+}
