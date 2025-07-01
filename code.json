@@ -13,7 +13,7 @@
     "usageType": "openSource"
   },
   "organization": "Centers for Medicare & Medicaid Services",
-  "repositoryURL": "https://github.com/CMSgov/ab2d-proprties",
+  "repositoryURL": "https://github.com/CMSgov/ab2d-properties",
   "repositoryHost": "github.com/CMSgov",
   "repositoryVisibility": "public",
   "vcs": "git",
