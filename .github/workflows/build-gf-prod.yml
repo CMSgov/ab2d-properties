@@ -2,9 +2,6 @@ name: Build-gf PROD
 run-name: build-gf PROD
 
 on:
-  push:
-    branches:
-      - db-ApplicationName
   workflow_call:
   workflow_dispatch:
 
