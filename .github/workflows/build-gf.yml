@@ -46,13 +46,13 @@ jobs:
 
       - name: Build and push docker image
         run: |
+      - name: Build and push docker image
+        run: |
           ECR_DOMAIN="$AWS_ACCOUNT.dkr.ecr.$AWS_REGION.amazonaws.com"
           SHA_SHORT=$(git rev-parse --short HEAD)
           aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_DOMAIN
           ECR_URI="$ECR_DOMAIN/$ECR_REPO"
-          
-          TAG_SHORT="$TAG_PREFIX-$GITHUB_REF_NAME"
-          
+          TAG_SHORT="$TAG_PREFIX-$GITHUB_REF_NAME-$SHA_SHORT"
           docker build -t "$ECR_URI:$TAG_SHORT" .
           docker push "$ECR_URI" --all-tags
           echo "Published **$ECR_URI:$TAG_SHORT**" >> $GITHUB_STEP_SUMMARY
