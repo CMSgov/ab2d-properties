@@ -22,18 +22,18 @@ import lombok.extern.slf4j.Slf4j;
 public class PropertiesController {
     private PropertyService propertyService;
 
-    private static final ResponseEntity NOT_FOUND = new ResponseEntity<>(HttpStatusCode.valueOf(404));
+    private static final ResponseEntity NOT_FOUND = new ResponseEntity<>(HttpStatusCode.valueOf(200));
 
     @GetMapping("/properties")
     ResponseEntity<List<PropertyDto>> listProperties() {
-        log.info("Returning HTTP 404 for listProperties()");
+        log.info("Returning HTTP 200 with empty response for listProperties()");
         return NOT_FOUND;
         //return new ResponseEntity<>(propertyService.getPropertiesDto(), HttpStatus.OK);
     }
 
     @GetMapping("/properties/{key}")
     ResponseEntity<PropertyDto> listProperty(@PathVariable String key) {
-        log.info("Returning HTTP 404 for listProperty()");
+        log.info("Returning HTTP 200 with empty response for listProperty()");
 
         return NOT_FOUND;
 //        PropertyDto prop = propertyService.getProperty(key);
@@ -45,7 +45,7 @@ public class PropertiesController {
 
     @PostMapping("/properties")
     ResponseEntity<PropertyDto> save(@RequestParam String key, @RequestParam String value) {
-        log.info("Returning HTTP 404 for save()");
+        log.info("Returning HTTP 200 with empty response for save()");
 
         return NOT_FOUND;
 
@@ -54,7 +54,7 @@ public class PropertiesController {
 
     @DeleteMapping("/properties/{key}")
     ResponseEntity<Boolean> delete(@PathVariable String key) {
-        log.info("Returning HTTP 404 for delete()");
+        log.info("Returning HTTP 200 with empty response for delete()");
 
         return NOT_FOUND;
 //        try {
