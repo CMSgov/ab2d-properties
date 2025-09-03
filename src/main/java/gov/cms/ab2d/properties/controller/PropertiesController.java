@@ -25,7 +25,7 @@ public class PropertiesController {
     private static final ResponseEntity HTTP_200 = new ResponseEntity<>(HttpStatusCode.valueOf(200));
 
     @GetMapping("/properties/health")
-    ResponseEntity<List<PropertyDto>> listProperties() {
+    ResponseEntity<List<PropertyDto>> health() {
         log.info("Returning HTTP 200 with empty response for health()");
         return HTTP_200;
         //return new ResponseEntity<>(propertyService.getPropertiesDto(), HttpStatus.OK);
