@@ -17,6 +17,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@Slf4j
 public class PropertiesController {
     private PropertyService propertyService;
 
@@ -24,12 +25,15 @@ public class PropertiesController {
 
     @GetMapping("/properties")
     ResponseEntity<List<PropertyDto>> listProperties() {
+        log.info("Returning HTTP 404 for listProperties()");
         return NOT_FOUND;
         //return new ResponseEntity<>(propertyService.getPropertiesDto(), HttpStatus.OK);
     }
 
     @GetMapping("/properties/{key}")
     ResponseEntity<PropertyDto> listProperty(@PathVariable String key) {
+        log.info("Returning HTTP 404 for listProperty()");
+
         return NOT_FOUND;
 //        PropertyDto prop = propertyService.getProperty(key);
 //        if (prop == null) {
@@ -40,6 +44,8 @@ public class PropertiesController {
 
     @PostMapping("/properties")
     ResponseEntity<PropertyDto> save(@RequestParam String key, @RequestParam String value) {
+        log.info("Returning HTTP 404 for save()");
+
         return NOT_FOUND;
 
         //return new ResponseEntity<>(propertyService.saveProperty(key, value), HttpStatus.OK);
@@ -47,6 +53,8 @@ public class PropertiesController {
 
     @DeleteMapping("/properties/{key}")
     ResponseEntity<Boolean> delete(@PathVariable String key) {
+        log.info("Returning HTTP 404 for delete()");
+
         return NOT_FOUND;
 //        try {
 //            propertyService.deleteProperty(key);
