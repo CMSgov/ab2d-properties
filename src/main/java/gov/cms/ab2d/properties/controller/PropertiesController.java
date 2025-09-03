@@ -22,12 +22,19 @@ import lombok.extern.slf4j.Slf4j;
 public class PropertiesController {
     private PropertyService propertyService;
 
-    private static final ResponseEntity NOT_FOUND = new ResponseEntity<>(HttpStatusCode.valueOf(200));
+    private static final ResponseEntity HTTP_200 = new ResponseEntity<>(HttpStatusCode.valueOf(200));
+
+    @GetMapping("/health")
+    ResponseEntity<List<PropertyDto>> listProperties() {
+        log.info("Returning HTTP 200 with empty response for health()");
+        return HTTP_200;
+        //return new ResponseEntity<>(propertyService.getPropertiesDto(), HttpStatus.OK);
+    }
 
     @GetMapping("/properties")
     ResponseEntity<List<PropertyDto>> listProperties() {
         log.info("Returning HTTP 200 with empty response for listProperties()");
-        return NOT_FOUND;
+        return HTTP_200;
         //return new ResponseEntity<>(propertyService.getPropertiesDto(), HttpStatus.OK);
     }
 
@@ -35,7 +42,7 @@ public class PropertiesController {
     ResponseEntity<PropertyDto> listProperty(@PathVariable String key) {
         log.info("Returning HTTP 200 with empty response for listProperty()");
 
-        return NOT_FOUND;
+        return HTTP_200;
 //        PropertyDto prop = propertyService.getProperty(key);
 //        if (prop == null) {
 //            return new ResponseEntity<>(new PropertyDto(), HttpStatus.NOT_FOUND);
@@ -47,7 +54,7 @@ public class PropertiesController {
     ResponseEntity<PropertyDto> save(@RequestParam String key, @RequestParam String value) {
         log.info("Returning HTTP 200 with empty response for save()");
 
-        return NOT_FOUND;
+        return HTTP_200;
 
         //return new ResponseEntity<>(propertyService.saveProperty(key, value), HttpStatus.OK);
     }
@@ -56,7 +63,7 @@ public class PropertiesController {
     ResponseEntity<Boolean> delete(@PathVariable String key) {
         log.info("Returning HTTP 200 with empty response for delete()");
 
-        return NOT_FOUND;
+        return HTTP_200;
 //        try {
 //            propertyService.deleteProperty(key);
 //            return new ResponseEntity<>(true, HttpStatus.OK);
