@@ -3,7 +3,6 @@ package gov.cms.ab2d.properties.controller;
 import gov.cms.ab2d.properties.dto.PropertyDto;
 import gov.cms.ab2d.properties.service.PropertyService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+
 
 @RestController
 @AllArgsConstructor
