@@ -1,3 +1,6 @@
+# THIS PROJECT HAS BEEN ARCHIVED
+As part of AB2D's _2025 Greenfield Migration_, this repository was targeted for removal.  
+
 # AB2D Properties Service
 
 This service is used to save runtime variables for services to access. Unlike an envrionment variable, these
