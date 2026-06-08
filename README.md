@@ -1,3 +1,11 @@
+# :warning: ARCHIVED REPOSITORY
+* This repository has been archived and is no longer maintained.
+
+* The code is provided for historical reference and may contain unpatched or unknown vulnerabilities.
+
+* It should not be used in production systems.
+
+  
 # THIS PROJECT HAS BEEN ARCHIVED
 As part of AB2D's _2025 Greenfield Migration_, this repository was targeted for removal.  
 
